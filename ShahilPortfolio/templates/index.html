@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shahil Singh Rawat - Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Shahil</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <button onclick="setTheme('light')" class="theme-btn" data-theme="light" title="Light Mode">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button onclick="setTheme('dark')" class="theme-btn" data-theme="dark" title="Dark Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button onclick="setTheme('system')" class="theme-btn" data-theme="system" title="System Theme">
+                    <i class="fas fa-desktop"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <div class="container">
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Shahil Singh Rawat" class="profile-img">
+            <h1>Hi, I'm <span class="highlight">Shahil Singh Rawat</span></h1>
+            <p>Aspiring AI/ML Engineer & Full Stack Developer</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn primary">Get in Touch</a>
+                <a href="#about" class="btn secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I'm a 19-year-old technology enthusiast currently pursuing my B.Tech degree in Computer Science Engineering with a specialization in Artificial Intelligence and Machine Learning.</p>
+            <p>My journey in tech started with web development, where I gained proficiency in HTML, CSS, Python, and Flask. I'm passionate about combining traditional web development with cutting-edge AI/ML technologies to create innovative solutions.</p>
+            <p>In my free time, I enjoy reading novels and stories, and I love cooking. These hobbies help me maintain a creative balance with my technical pursuits.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Python</li>
+                        <li>Flask</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>AI/ML</h3>
+                    <ul>
+                        <li>AI Fundamentals</li>
+                        <li>Microsoft Azure AI</li>
+                        <li>AI in Disaster Management</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & Technologies</h3>
+                    <ul>
+                        <li>Figma</li>
+                        <li>Power BI</li>
+                        <li>Git</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-card">
+                <h3>B.Tech in Computer Science Engineering</h3>
+                <p>Specialization in Artificial Intelligence and Machine Learning</p>
+                <p class="timeline">2023 - Present</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Blood Donation Management System</h3>
+                    <p>A Flask-based system for managing blood donation records and requests.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/shahilcseai/blood_donation_management-flask.git" target="_blank" class="btn">View on GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h3>Video Player Application</h3>
+                    <p>Custom video player implementation with enhanced features.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/shahilcseai/video47Ex7.git" target="_blank" class="btn">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/shahilcse" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/shahilcseai" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <form method="POST" action="{{ url_for('contact') }}">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    {{ form.name(class="form-control", placeholder="Your Name") }}
+                </div>
+                <div class="form-group">
+                    {{ form.email(class="form-control", placeholder="Your Email") }}
+                </div>
+                <div class="form-group">
+                    {{ form.message(class="form-control", placeholder="Your Message") }}
+                </div>
+                <button type="submit" class="btn primary">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Shahil Singh Rawat. All rights reserved.</p>
+        </div>
+    </footer>
+    <style>
+        .theme-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover {
+            background-color: var(--accent-bg);
+        }
+
+        .theme-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</body>
+</html>
